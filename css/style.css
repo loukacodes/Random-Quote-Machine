@@ -9,8 +9,8 @@ body {
 }
 
 #quoteBox {
-  width: 30em;
-  height: 38em;
+  width: 32em;
+  min-height: 38em;
   margin: 3em auto;
   text-align: center;
   background-color: #fff;
@@ -19,12 +19,12 @@ body {
 }
 
 .wrapper {
-  height: 12em;
+  min-height: 12em;
 }
 
 #quote {
-  font-family: 'Fjalla One', sans-serif;
-  font-size: 200%;
+  font-family: 'Lora', serif;
+  font-size: 2em;
 }
 
 #author {
