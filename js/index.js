@@ -2,18 +2,25 @@ $(document).ready(function() {
 
 var quoteLibrary = [];
 
-$.ajax({url: "quotes.json", success: function(result){
-       quoteLibrary = result;
-       console.log(quoteLibrary);
-   }});
+(function getQuoteLibrary() {
+  $.ajax({
+    url: "https://raw.githubusercontent.com/trangtmtran/Random-Quote-Machine/master/quotes.json",
+    type: 'GET',
+    dataType: 'json',
+    success: function(result){
+         quoteLibrary = result.quotes;
+         console.log(quoteLibrary.length);
+     }});
+})();
+
 
 
 $("#getQuote").on("click",function() {
   var ranNum = Math.floor(Math.random() * quoteLibrary.length) + 1;
-    $("#quote").fadeIn("slow").html("&quot;" + quoteLibrary[ranNum][0] + "&quot;");
-        $("#author").html(quoteLibrary[ranNum][1]);
+    $("#quote").fadeIn("slow").html("&quot;" + quoteLibrary[ranNum]["quote"] + "&quot;");
+        $("#author").html(quoteLibrary[ranNum]["author"]);
           $("#share-it").attr("href", "https://twitter.com/intent/tweet/?text="
-                                                  + quoteLibrary[ranNum][0]
-                                                  + quoteLibrary[ranNum][1]);
+                                                  + quoteLibrary[ranNum]["quote"]
+                                                  + quoteLibrary[ranNum]["author"]);
  });
 });
